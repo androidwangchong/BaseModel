@@ -2,6 +2,19 @@
 
 ---
 
+-**BaseActivity,BaseListActivity用法**
+
+- 继承后在设置activity title时，需要使用lazy
+
+        override val title: String by lazy {
+            getString(R.string.title)
+        }
+
+- 其中重写了getResources()方法是为了在手机设置成为老年机模式时，字体大小不变。
+
+
+
+
 -**permissionhandler使用说明**
 
    已获取相机权限为例：
