@@ -5,7 +5,7 @@
 -**permissionhandler使用说明**
 
    已获取相机权限为例：
-   `handlePermission(
+   handlePermission(
                    AppPermission.CAMERA,
                    onGranted = {
                        zxingview.startCamera()
