@@ -4,7 +4,7 @@
 
 -**permissionhandler使用说明**
 
-   已开启权限为例：
+   已获取相机权限为例：
    `handlePermission(
                    AppPermission.CAMERA,
                    onGranted = {
@@ -22,8 +22,7 @@
                        }.setNegativeButton(getString(R.string.cancel), null)
                        .setCancelable(false)
                builder.create().show()
-
-           })`
+           })
 
 
 
