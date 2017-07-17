@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     override fun onResponse(p0: Call<model>?, p1: Response<model>?) {
-                        LogUtil.format("model", p1?.body().toString())
+                        LogUtil.formatToJson("model", p1?.body().toString())
 
                     }
                 }

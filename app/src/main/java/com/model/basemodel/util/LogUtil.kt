@@ -14,7 +14,7 @@ object LogUtil {
      */
     private val empty = "  "
 
-    fun format(tag: String, json: String) {
+    fun formatToJson(tag: String, json: String) {
         try {
             var empty = 0
             val chs = json.toCharArray()
