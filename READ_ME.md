@@ -37,3 +37,6 @@
                           .setCancelable(false)
                   builder.create().show()
               })
+-**工具类的说明**
+工具类来自：https://github.com/Blankj/AndroidUtilCode.git
+1.ActivityUtil Activity相关工具类
