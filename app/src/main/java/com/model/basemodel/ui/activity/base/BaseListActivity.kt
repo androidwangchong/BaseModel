@@ -8,6 +8,8 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.View
 import android.view.WindowManager
@@ -51,8 +53,14 @@ abstract class BaseListActivity : IBase, AppCompatActivity(), AnkoLogger {
     }
 
     var mLotateHeaderListViewFrame: PtrClassicFrameLayout? = null
+    var mRecyclerView: RecyclerView? = null
 
     fun initListViewFrame() {
+        mRecyclerView = findViewById(R.id.recyler_view)
+                as RecyclerView
+        mRecyclerView?.apply {
+            layoutManager = LinearLayoutManager(this@BaseListActivity, LinearLayoutManager.VERTICAL, false)
+        }
         mLotateHeaderListViewFrame = findViewById(R.id.rotate_header_list_view_frame)
                 as PtrClassicFrameLayout
         mLotateHeaderListViewFrame?.setPtrHandler(object : PtrDefaultHandler2() {

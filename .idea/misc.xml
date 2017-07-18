@@ -24,13 +24,10 @@
       </value>
     </option>
   </component>
-<<<<<<< HEAD
-=======
   <component name="ProjectPlainTextFileTypeManager">
     <file url="file://$PROJECT_DIR$/READ_ME.md" />
   </component>
->>>>>>> cb81ac45c5dec7889c0d89a5db8db58cabea232b
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
