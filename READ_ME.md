@@ -12,9 +12,6 @@
 
 - 其中重写了getResources()方法是为了在手机设置成为老年机模式时，字体大小不变。
 
-
-
-
 -**permissionhandler使用说明**
 
    已获取相机权限为例：
@@ -37,3 +34,26 @@
                           .setCancelable(false)
                   builder.create().show()
               })
+
+-**SimAdapter用法**
+
+GitHub地址：https://github.com/MEiDIK/SlimAdapter
+
+                SlimAdapter.create()
+                .register<String>(R.layout.item_string) { data, injector ->
+                    ...// inject data into views
+                }
+                .register<User>(R.layout.item_user) { data, injector ->
+                    ...// inject data into views
+                }
+                .register<Int>(R.layout.item_interger) { data, injector ->
+                    ...// inject data into views
+                }
+                .registerDefault(R.layout.item_string) { data, injector ->
+                    ...// inject data into views
+                }
+                .attachTo(recyclerView)
+
+-**添加Glide图片加载**
+
+Github地址：https://github.com/bumptech/glide

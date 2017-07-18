@@ -93,6 +93,12 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp-urlconnection:1.6.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
     compile 'com.google.code.gson:gson:2.8.0'
-
+    //adapter
+    compile 'net.idik:slimadapter:2.1.1'
+    //glide
+    compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
+    compile 'com.android.support:support-v4:25.3.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC1'
+    compile 'com.github.bluejamesbond:textjustify-android:2.1.6'
 
 }

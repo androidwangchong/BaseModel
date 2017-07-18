@@ -17,8 +17,8 @@
         cube_ptr:ptr_resistance="1.7">
 
 
-        <ListView
-            android:id="@+id/listview"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#ffffff"
