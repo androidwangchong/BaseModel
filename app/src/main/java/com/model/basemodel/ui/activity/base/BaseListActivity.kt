@@ -14,9 +14,9 @@ import android.support.v7.widget.Toolbar
 import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
+import com.jaeger.library.StatusBarUtil
 import com.model.basemodel.R
 import com.model.basemodel.ui.activity.base.IBase
-import com.model.basemodel.util.setNotificationBarColor
 import de.greenrobot.event.EventBus
 import kotlinx.android.synthetic.main.common_list.*
 import org.jetbrains.anko.AnkoLogger
@@ -37,7 +37,7 @@ abstract class BaseListActivity : IBase, AppCompatActivity(), AnkoLogger {
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this)
         }
-        setStatusBarColor(ContextCompat.getColor(this@BaseListActivity, R.color.colorPrimary))
+        StatusBarUtil.setColor(this@BaseListActivity, ContextCompat.getColor(this@BaseListActivity, R.color.colorPrimary))
         initView()
         initData()
         initErrorLayout()
@@ -120,20 +120,6 @@ abstract class BaseListActivity : IBase, AppCompatActivity(), AnkoLogger {
     override fun onDestroy() {
         EventBus.getDefault().unregister(this)
         super.onDestroy()
-    }
-
-    fun setStatusBarColor(color: Int) {
-        if (Build.VERSION.SDK_INT >= 21) {
-            val window = window
-            //取消设置透明状态栏,使 ContentView 内容不再沉浸到状态栏下
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            //需要设置这个 flag 才能调用 setStatusBarColor 来设置状态栏颜色
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            //设置状态栏颜色
-            window.statusBarColor = color
-        } else {
-            setNotificationBarColor(color)
-        }
     }
 
     fun showErrorLayout() {

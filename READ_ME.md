@@ -57,3 +57,7 @@ GitHub地址：https://github.com/MEiDIK/SlimAdapter
 -**添加Glide图片加载**
 
 Github地址：https://github.com/bumptech/glide
+
+-**添加StatusBarUtil**
+
+Github地址：https://github.com/laobie/StatusBarUtil
