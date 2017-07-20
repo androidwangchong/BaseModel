@@ -34,11 +34,10 @@
                           .setCancelable(false)
                   builder.create().show()
               })
-<<<<<<< HEAD
+
 -**工具类的说明**
 工具类来自：https://github.com/Blankj/AndroidUtilCode.git
 1.ActivityUtil Activity相关工具类
-=======
 
 -**SimAdapter用法**
 
@@ -66,3 +65,9 @@ Github地址：https://github.com/bumptech/glide
 -**添加StatusBarUtil**
 
 Github地址：https://github.com/laobie/StatusBarUtil
+
+-**添加日志打印工具Logger**
+
+Github地址：https://github.com/orhanobut/logger
+
+在MyApplication中进行初始化

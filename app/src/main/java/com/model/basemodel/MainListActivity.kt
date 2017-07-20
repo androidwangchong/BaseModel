@@ -6,7 +6,7 @@ import com.bumptech.glide.Glide
 import com.model.basemodel.http.RetrofitClient
 import com.model.basemodel.http.api.DemoAPI
 import com.model.basemodel.http.api.model
-import com.model.basemodel.util.LogUtil
+import com.orhanobut.logger.Logger
 import com.yimai.app.ui.base.BaseListActivity
 import net.idik.lib.slimadapter.SlimAdapter
 import retrofit2.Call
@@ -45,7 +45,7 @@ class MainListActivity : BaseListActivity() {
                     }
 
                     override fun onResponse(p0: Call<model>?, p1: Response<model>?) {
-                        LogUtil.formatToJson("model", p1?.body().toString())
+                        Logger.json(p1?.body().toString())
 
                         for (i in 0..2) {
                             p1?.body()?.let { list.add(it) }

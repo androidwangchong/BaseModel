@@ -6,7 +6,6 @@ import android.util.Log
 import com.model.basemodel.http.RetrofitClient
 import com.model.basemodel.http.api.DemoAPI
 import com.model.basemodel.http.api.model
-import com.model.basemodel.util.LogUtil
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,7 +22,6 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     override fun onResponse(p0: Call<model>?, p1: Response<model>?) {
-                        LogUtil.formatToJson("model", p1?.body().toString())
 
                     }
                 }

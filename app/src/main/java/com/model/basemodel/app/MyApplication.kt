@@ -5,12 +5,18 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.support.multidex.MultiDex
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.FormatStrategy
+import com.orhanobut.logger.Logger
+import com.orhanobut.logger.Logger.addLogAdapter
+import com.orhanobut.logger.PrettyFormatStrategy
+
 
 /**
  * BaseModel
  * Created by wangchong on 2017/7/14.
  */
-class MyApplication  : Application() {
+class MyApplication : Application() {
 
     companion object {
         private var instance: Application? = null
@@ -20,11 +26,23 @@ class MyApplication  : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        initLoggerInfo()
     }
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         MultiDex.install(this)
+    }
+
+    fun initLoggerInfo() {
+//        var formatStrategy = PrettyFormatStrategy.newBuilder()
+//                .showThreadInfo(true)   //（可选）是否显示线程信息。默认值为true
+//                .methodCount(2)          //（可选）要显示的方法行数。默认值2
+//                .methodOffset(5)         //（可选）隐藏内部方法调用到偏移量。默认5
+////        .logStrategy(customLog)//（可选）更改要打印的日志策略。默认LogCat
+////                .tag("我的自定义标签")    //（可选）每个日志的全局标签。默认PRETTY_LOGGER
+//                .build()
+        Logger.addLogAdapter(AndroidLogAdapter())
     }
 
 

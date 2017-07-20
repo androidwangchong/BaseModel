@@ -102,5 +102,7 @@ dependencies {
     compile 'com.github.bluejamesbond:textjustify-android:2.1.6'
     //状态栏颜色
     compile 'com.jaeger.statusbarutil:library:1.4.0'
+    //日志打印工具
+    compile 'com.orhanobut:logger:2.1.1'
 
 }

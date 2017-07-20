@@ -6,6 +6,12 @@ import okhttp3.*
 import java.util.concurrent.TimeUnit
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.Cookie
+import java.io.IOException
+import okhttp3.HttpUrl
+
+
+
+
 
 
 /**
@@ -22,8 +28,8 @@ object OKHttpFactory {
         val TIMEOUT_WRITE = 25
         val TIMEOUT_CONNECTION = 25
         // Log信息
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
+        val loggingInterceptor = HttpLoggerInterceptor()
+        loggingInterceptor.level = HttpLoggerInterceptor.Level.HEADERS
 
         val cache = Cache(MyApplication.instance().cacheDir, 10 * 1024 * 1024)
 
@@ -31,33 +37,23 @@ object OKHttpFactory {
                 //打印请求log
                 .addInterceptor(loggingInterceptor)
                 //stetho,可以在chrome中查看请求
-                .addNetworkInterceptor { chain ->
-                    val request = chain.request()
-                    val response = chain.proceed(request)
-                    /*String cacheControl = request.header("Cache-Control");
-                                          if (TextUtils.isEmpty(cacheControl)) {
-                                              cacheControl = "public, max-age=60";
-                                          }*/
-                    //60秒缓存
-                    val maxAge = 60
-                    return@addNetworkInterceptor response.newBuilder()
-                            .removeHeader("Pragma")// 清除头信息，因为服务器如果不支持，会返回一些干扰信息，不清除下面无法生效
-                            .removeHeader("Cache-Control")
-                            .header("Cache-Control", "public, max-age=" + maxAge)
-                            .build()
-                }
-
-                //添加header
-                .addInterceptor(Interceptor { chain ->
-                    val request = chain.request()
-                            .newBuilder()
-                            .addHeader("Accept", "application/json")
-                            .addHeader("app-version", "")
-                            .addHeader("app-key", "")
-                            .build()
-                    return@Interceptor chain.proceed(request)
+                .addNetworkInterceptor(object : Interceptor {
+                    override fun intercept(chain: Interceptor.Chain?): Response {
+                        val request = chain?.request()
+                        val response = chain?.proceed(request)
+                        /*String cacheControl = request.header("Cache-Control");
+                                              if (TextUtils.isEmpty(cacheControl)) {
+                                                  cacheControl = "public, max-age=60";
+                                              }*/
+                        //60秒缓存
+                        val maxAge = 60
+                        return response?.newBuilder()
+                                ?.removeHeader("Pragma")// 清除头信息，因为服务器如果不支持，会返回一些干扰信息，不清除下面无法生效
+                                ?.removeHeader("Cache-Control")
+                                ?.addHeader("Cache-Control", "public, max-age=" + maxAge)
+                                ?.build() as Response
+                    }
                 })
-
                 //必须是设置Cache目录
                 .cache(cache)
 
@@ -82,4 +78,6 @@ object OKHttpFactory {
                 .writeTimeout(TIMEOUT_WRITE.toLong(), TimeUnit.SECONDS)
                 .build()
     }
+
+
 }
