@@ -4,9 +4,7 @@ package com.model.basemodel.http
 import com.model.basemodel.app.MyApplication
 import okhttp3.*
 import java.util.concurrent.TimeUnit
-import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.Cookie
-import java.io.IOException
 import okhttp3.HttpUrl
 
 
