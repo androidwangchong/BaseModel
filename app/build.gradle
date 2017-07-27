@@ -104,5 +104,7 @@ dependencies {
     compile 'com.jaeger.statusbarutil:library:1.4.0'
     //日志打印工具
     compile 'com.orhanobut:logger:2.1.1'
+    //动画效果
+    compile 'com.github.florent37:viewanimator:1.0.5'
 
 }

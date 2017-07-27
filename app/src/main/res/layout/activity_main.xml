@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.model.basemodel.MainActivity">
+<<<<<<< HEAD
     <FrameLayout
         android:id="@+id/fl_container"
         android:layout_width="match_parent"
@@ -16,6 +17,12 @@
     <RadioGroup
         android:id="@+id/rd_group"
         android:layout_width="match_parent"
+=======
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+>>>>>>> 8f95e74266eacd9fffe1c90577999c7749c0697c
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/transparent"

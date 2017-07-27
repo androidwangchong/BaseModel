@@ -24,7 +24,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".MainActivity" android:screenOrientation="portrait">
+=======
+        <activity android:name=".TestActivity">
+>>>>>>> 8f95e74266eacd9fffe1c90577999c7749c0697c
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

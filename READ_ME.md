@@ -71,3 +71,10 @@ Github地址：https://github.com/laobie/StatusBarUtil
 Github地址：https://github.com/orhanobut/logger
 
 在MyApplication中进行初始化
+
+-**添加动画效果库**
+
+GitHub地址：https://github.com/florent37/ViewAnimator
+
+
+

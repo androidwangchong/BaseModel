@@ -12,6 +12,7 @@ import android.view.WindowManager
 import android.widget.TextView
 import com.jaeger.library.StatusBarUtil
 import com.model.basemodel.R
+import com.model.basemodel.ui.dialog.ProgressBarDialog
 import de.greenrobot.event.EventBus
 import org.jetbrains.anko.AnkoLogger
 
@@ -39,7 +40,7 @@ abstract class BaseActivity : IBase, AppCompatActivity(), AnkoLogger {
         initData()
     }
 
-    open fun onBack(){
+    open fun onBack() {
         finish()
     }
 
@@ -78,6 +79,17 @@ abstract class BaseActivity : IBase, AppCompatActivity(), AnkoLogger {
         resources.updateConfiguration(configuration,
                 resources.displayMetrics)
         return resources
+    }
+
+    var progress_bar_dialog: ProgressBarDialog? = null
+
+    fun showProgressBarDialog(text: String) {
+        progress_bar_dialog = ProgressBarDialog(text)
+        progress_bar_dialog?.show(fragmentManager, "progress_bar_dialog")
+    }
+
+    fun hideProgressBarDialog() {
+        progress_bar_dialog?.dismiss()
     }
 
 
