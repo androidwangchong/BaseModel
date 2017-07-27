@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@drawable/corner_toast_bg"
+              android:gravity="center"
+              android:orientation="horizontal"
+              android:paddingBottom="15dp"
+              android:paddingLeft="15dp"
+              android:paddingRight="15dp"
+              android:paddingTop="15dp">
+
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/icon_info"/>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="title"
+            android:textStyle="bold"
+            android:textColor="#565E70"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/subtitle_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_text"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="3dp"
+            android:maxWidth="160dp"
+            android:visibility="gone"
+            android:text="subtitle"
+            android:textColor="#565E70"
+            android:textSize="10sp"/>
+    </RelativeLayout>
+
+
+</LinearLayout>
