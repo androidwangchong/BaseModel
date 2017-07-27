@@ -9,15 +9,35 @@
     <FrameLayout
         android:id="@+id/fl_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tl_container"
+        android:layout_height="match_parent"
+        android:background="@color/bg_gray"
+        android:layout_above="@+id/rd_group"
         ></FrameLayout>
-    <TableLayout
-        android:id="@+id/tl_container"
+    <RadioGroup
+        android:id="@+id/rd_group"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_height="wrap_content">
+        android:background="@color/transparent"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rd_menu_credit"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/selector_credit"
+            android:text="信用"/>
 
-    </TableLayout>
+        <RadioButton
+            android:id="@+id/rd_menu_service"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/selector_service"
+            android:text="服务"/>
+
+        <RadioButton
+            android:id="@+id/rd_menu_mine"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/selector_mine"
+            android:text="我的"/>
+
+    </RadioGroup>
 
 </RelativeLayout>
