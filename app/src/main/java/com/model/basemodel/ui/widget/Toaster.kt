@@ -27,17 +27,17 @@ class Toaster {
         val PROMPT = 1
         val SUCCESSFUL = 2
 
-        fun imageText(context: Context, imageIdex: Int, title_text: String, subtitle_text: String = "") {
+        fun imageText(context: Context, imageIdex: Int, subtitle_text: String, title_text: String = "") {
             val v = LayoutInflater.from(context).inflate(R.layout.eplay_toast, null)
             val title = v.findViewById(R.id.title_text) as TextView
             val subtitleTitle = v.findViewById(R.id.subtitle_text) as TextView
             val image_view = v.findViewById(R.id.image_view) as ImageView
-            title.text = title_text
-            if (TextUtils.isEmpty(subtitle_text)) {
-                subtitleTitle.visibility = View.GONE
+            subtitleTitle.text = subtitle_text
+            if (TextUtils.isEmpty(title_text)) {
+                title.visibility = View.GONE
             } else {
-                subtitleTitle.visibility = View.VISIBLE
-                subtitleTitle.text = subtitle_text
+                title.visibility = View.VISIBLE
+                title.text = title_text
             }
             when (imageIdex) {
                 FORBID -> {

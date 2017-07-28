@@ -1,9 +1,10 @@
 package com.model.basemodel
 
 import com.model.basemodel.ui.activity.base.BaseActivity
-import com.model.basemodel.ui.widget.Toaster
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import com.model.basemodel.util.openLoginActivity
+
 
 /**
  * BaseModel
@@ -15,7 +16,7 @@ class TestActivity : BaseActivity() {
 
     override fun initView() {
         text.onClick {
-            showProgressBarDialog("正在设置。。。。。。。")
+            openLoginActivity()
         }
 
 
