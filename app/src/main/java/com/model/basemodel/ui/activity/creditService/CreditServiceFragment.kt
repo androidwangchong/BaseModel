@@ -11,7 +11,7 @@ import com.model.basemodel.R
 
 
 /**
- * A simple [Fragment] subclass.
+ * 服务模块主Fragment
  */
 class CreditServiceFragment : Fragment() {
 

@@ -11,7 +11,7 @@ import com.model.basemodel.R
 
 
 /**
- * A simple [Fragment] subclass.
+ *我的模块主Fragment
  */
 class MineFragment : Fragment() {
 

@@ -11,6 +11,9 @@ import com.model.basemodel.ui.activity.creditService.CreditServiceFragment
 import com.model.basemodel.ui.activity.mine.MineFragment
 import org.jetbrains.anko.find
 
+/**
+ * 主Activity
+ */
 class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
 
 
@@ -19,9 +22,9 @@ class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
     lateinit var rd_menu_credit: RadioButton
     lateinit var rd_menu_service: RadioButton
     lateinit var rd_menu_mine: RadioButton
-     var creditFragment: CreditFragment? = null
-     var serviceFragment: CreditServiceFragment? = null
-     var mineFragment: MineFragment? = null
+    var creditFragment: CreditFragment? = null
+    var serviceFragment: CreditServiceFragment? = null
+    var mineFragment: MineFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,9 +52,9 @@ class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
         val transaction: FragmentTransaction = getFragmentManager().beginTransaction()
-        hideAllFragment(transaction)
+        hideAllFragment(transaction)//隐藏所有Fragment
         when (checkedId) {
-            R.id.rd_menu_credit -> {
+            R.id.rd_menu_credit -> {//选择信用模块
                 if (creditFragment == null) {
                     creditFragment = CreditFragment()
                     transaction.add(R.id.fl_container, creditFragment)
@@ -59,7 +62,7 @@ class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
                     transaction.show(creditFragment)
                 }
             }
-            R.id.rd_menu_service -> {
+            R.id.rd_menu_service -> {//选择服务模块
                 if (serviceFragment == null) {
                     serviceFragment = CreditServiceFragment()
                     transaction.add(R.id.fl_container, serviceFragment)
@@ -67,7 +70,7 @@ class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
                     transaction.show(serviceFragment)
                 }
             }
-            R.id.rd_menu_mine -> {
+            R.id.rd_menu_mine -> {//选择我的模块
                 if (mineFragment == null) {
                     mineFragment = MineFragment()
                     transaction.add(R.id.fl_container, mineFragment)
