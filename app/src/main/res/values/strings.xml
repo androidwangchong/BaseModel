@@ -68,4 +68,7 @@
     <string name="permission_write_ext_storage_explanation">Application needs WRITE_EXTERNAL_STORAGE_PERMISSION in order to write into disk memory. Please allow permission.</string>
     <string name="permission_write_ext_storage_denied">Please enable WRITE_EXTERNAL_STORAGE_PERMISSION. Go to \nSettings -> Apps -> Permission</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
