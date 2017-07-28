@@ -11,15 +11,16 @@ import com.model.basemodel.R
 
 
 /**
- * 服务模块主Fragment
+ * 创建时间： 2017/7/28
+ * 作者：WangZhuang
+ * 功能描述：服务模块主Fragment
  */
 class CreditServiceFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         return inflater!!.inflate(R.layout.fragment_credit2, container, false)
     }
 
-}// Required empty public constructor
+}
