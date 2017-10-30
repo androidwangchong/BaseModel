@@ -1,23 +1,21 @@
 package com.model.basemodel
 
-import android.view.View
 import android.widget.ImageView
+import com.alibaba.fastjson.JSON
 import com.bumptech.glide.Glide
-import com.model.basemodel.http.RetrofitClient
-import com.model.basemodel.http.api.DemoAPI
-import com.model.basemodel.http.api.model
+import com.model.basemodel.http.apiconfig.model
+import com.model.basemodel.http.demoApi.userInfo
 import com.orhanobut.logger.Logger
 import com.yimai.app.ui.base.BaseListActivity
 import net.idik.lib.slimadapter.SlimAdapter
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 /**
  * BaseModel
  * Created by wangchong on 2017/7/17.
  */
 class MainListActivity : BaseListActivity() {
+    override fun getIntentMessageData() {
+    }
 
     private val adapter by lazy {
         SlimAdapter.create().register<model>(R.layout.view_demo) {
@@ -38,23 +36,7 @@ class MainListActivity : BaseListActivity() {
     }
 
     override fun initData() {
-        RetrofitClient.retrofit.create(DemoAPI::class.java).userInfo().enqueue(
-                object : Callback<model> {
-                    override fun onFailure(p0: Call<model>?, p1: Throwable?) {
-
-                    }
-
-                    override fun onResponse(p0: Call<model>?, p1: Response<model>?) {
-                        Logger.json(p1?.body().toString())
-
-                        for (i in 0..2) {
-                            p1?.body()?.let { list.add(it) }
-                        }
-                        adapter.updateData(list).notifyDataSetChanged()
-                        refreshComplete()
-                    }
-                }
-        )
+        userInfo()
     }
 
     override fun onRefresh() {
@@ -62,6 +44,21 @@ class MainListActivity : BaseListActivity() {
     }
 
     override fun onLoadMore() {
+    }
+
+    override fun onEvent(event: Any) {
+        super.onEvent(event)
+        when(event){
+            is model -> {
+                Logger.json(JSON.toJSONString(event))
+
+                for (i in 0..2) {
+                    event.let { list.add(it) }
+                }
+                adapter.updateData(list).notifyDataSetChanged()
+                refreshComplete()
+            }
+        }
     }
 
 

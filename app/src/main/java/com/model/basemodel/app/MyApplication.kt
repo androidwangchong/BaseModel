@@ -1,15 +1,13 @@
 package com.model.basemodel.app
 
-import android.app.Activity
 import android.app.Application
 import android.content.Context
-import android.os.Bundle
 import android.support.multidex.MultiDex
+import com.model.basemodel.http.OKHttpFactory
+import com.model.basemodel.http.apiconfig.HttpConfig
 import com.orhanobut.logger.AndroidLogAdapter
-import com.orhanobut.logger.FormatStrategy
 import com.orhanobut.logger.Logger
-import com.orhanobut.logger.Logger.addLogAdapter
-import com.orhanobut.logger.PrettyFormatStrategy
+import java.io.IOException
 
 
 /**
@@ -27,6 +25,7 @@ class MyApplication : Application() {
         super.onCreate()
         instance = this
         initLoggerInfo()
+        initUatCer()
     }
 
     override fun attachBaseContext(base: Context?) {
@@ -45,5 +44,14 @@ class MyApplication : Application() {
         Logger.addLogAdapter(AndroidLogAdapter())
     }
 
+    fun initUatCer() {
+        if (HttpConfig.IS_UAT) {
+            try {
+                OKHttpFactory.setCertificates(assets.open("uat_dev_hrx_ai.cer"))
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+    }
 
 }

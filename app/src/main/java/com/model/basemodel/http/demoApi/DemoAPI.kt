@@ -1,6 +1,7 @@
-package com.model.basemodel.http.api
+package com.model.basemodel.http.demoApi
 
-import com.model.basemodel.http.api.HttpHeaderConfig.loginHeader
+import com.model.basemodel.http.apiconfig.HttpHeaderConfig.loginHeader
+import com.model.basemodel.http.apiconfig.model
 import retrofit2.Call
 import retrofit2.http.*
 

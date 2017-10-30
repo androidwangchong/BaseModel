@@ -1,6 +1,6 @@
 package com.model.basemodel.http
 
-import com.model.basemodel.http.api.DemoAPI
+import com.model.basemodel.http.demoApi.DemoAPI
 
 /**
  * BaseModel

@@ -117,5 +117,8 @@ dependencies {
     compile 'com.jakewharton.rxbinding2:rxbinding-design-kotlin:2.0.0'
     compile 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:2.0.0'
     compile 'io.reactivex.rxjava2:rxkotlin:2.1.0'
-
+    //添加底部dialog
+    compile 'me.shaohui:bottomdialog:1.1.9'
+    //fastjson
+    compile 'com.alibaba:fastjson:1.2.37'
 }

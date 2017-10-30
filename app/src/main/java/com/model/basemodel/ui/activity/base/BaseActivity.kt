@@ -36,6 +36,7 @@ abstract class BaseActivity : IBase, AppCompatActivity(), AnkoLogger {
             EventBus.getDefault().register(this)
         }
         StatusBarUtil.setColor(this@BaseActivity, ContextCompat.getColor(this@BaseActivity, R.color.colorPrimary))
+        getIntentMessageData()
         initView()
         initData()
     }
@@ -50,9 +51,9 @@ abstract class BaseActivity : IBase, AppCompatActivity(), AnkoLogger {
 
     abstract val title: String
     abstract val layoutResId: Int
+    abstract fun getIntentMessageData()
     abstract override fun initView()
     abstract override fun initData()
-
 
     open fun onEvent(event: Any) {
 

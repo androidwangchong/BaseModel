@@ -1,4 +1,4 @@
-package com.model.basemodel.http.api;
+package com.model.basemodel.http.apiconfig;
 
 import com.google.gson.annotations.SerializedName;
 

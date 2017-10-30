@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
-import com.model.basemodel.http.api.model
+import com.model.basemodel.http.apiconfig.model
 import com.model.basemodel.ui.adapter.view.DemoView
 
 /**
