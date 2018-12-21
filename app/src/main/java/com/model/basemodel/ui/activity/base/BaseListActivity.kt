@@ -14,9 +14,14 @@ import android.support.v7.widget.Toolbar
 import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
+import android.widget.Toast
 import com.jaeger.library.StatusBarUtil
 import com.model.basemodel.R
 import com.model.basemodel.ui.activity.base.IBase
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.api.RefreshLayout
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import de.greenrobot.event.EventBus
 import kotlinx.android.synthetic.main.common_list.*
 import org.jetbrains.anko.AnkoLogger
@@ -53,7 +58,7 @@ abstract class BaseListActivity : IBase, AppCompatActivity(), AnkoLogger {
         toolbar_title?.text = title
     }
 
-    var mLotateHeaderListViewFrame: PtrClassicFrameLayout? = null
+    var mRefreshLayout: SmartRefreshLayout? = null
     var mRecyclerView: RecyclerView? = null
 
     fun initListViewFrame() {
@@ -62,34 +67,30 @@ abstract class BaseListActivity : IBase, AppCompatActivity(), AnkoLogger {
         mRecyclerView?.apply {
             layoutManager = LinearLayoutManager(this@BaseListActivity, LinearLayoutManager.VERTICAL, false)
         }
-        mLotateHeaderListViewFrame = findViewById(R.id.rotate_header_list_view_frame)
-                as PtrClassicFrameLayout
-        mLotateHeaderListViewFrame?.setPtrHandler(object : PtrDefaultHandler2() {
-            override fun onLoadMoreBegin(frame: PtrFrameLayout) {
-                mLotateHeaderListViewFrame?.postDelayed(Runnable {
-                    onLoadMore()
-                }, 1500)
-            }
-
-            override fun onRefreshBegin(frame: PtrFrameLayout) {
-                mLotateHeaderListViewFrame?.postDelayed(Runnable {
-                    onRefresh()
-                    hideErrorLayout()
-                }, 1500)
-            }
-        })
-        // header  设置下拉刷新header  如只需常规刷新，删除一下代码
-        val header = StoreHouseHeader(this)
-        header.setPadding(0, dip(15.0f), 0, dip(15.0f))
-        header.initWithString("double wang")
-        header.setTextColor(R.color.colorPrimary)
-        mLotateHeaderListViewFrame?.setHeaderView(header)
-        mLotateHeaderListViewFrame?.addPtrUIHandler(header)
+        mRefreshLayout = findViewById(R.id.refreshLayout)
+                as SmartRefreshLayout
+        mRefreshLayout?.setOnRefreshListener { refreshLayout ->
+            refreshLayout.layout.postDelayed({
+                onRefresh()
+                hideErrorLayout()
+                refreshLayout.finishRefresh()
+                refreshLayout.resetNoMoreData()//刷新时重制loadmore
+            }, 2000)
+        }
+        mRefreshLayout?.setOnLoadMoreListener { refreshLayout ->
+            refreshLayout.layout.postDelayed({
+                onLoadMore()
+                refreshLayout.finishLoadMore()
+//                refreshLayout.finishLoadMoreWithNoMoreData()//将不会再次触发加载更多事件
+            }, 2000)
+        }
+        //触发自动刷新
+//        refreshLayout.autoRefresh()
     }
 
     //停止刷新
     fun refreshComplete() {
-        mLotateHeaderListViewFrame?.refreshComplete()
+        mRefreshLayout?.finishRefresh()
     }
 
     //设置网络错误时，点击重新请求

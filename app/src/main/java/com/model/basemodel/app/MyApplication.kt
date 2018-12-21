@@ -3,10 +3,16 @@ package com.model.basemodel.app
 import android.app.Application
 import android.content.Context
 import android.support.multidex.MultiDex
+import com.model.basemodel.R
 import com.model.basemodel.http.OKHttpFactory
 import com.model.basemodel.http.apiconfig.HttpConfig
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.api.*
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter
+import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import java.io.IOException
 
 
@@ -19,6 +25,24 @@ class MyApplication : Application() {
     companion object {
         private var instance: Application? = null
         fun instance() = instance!!
+        //static 代码段可以防止内存泄露
+        init {
+            //设置全局的Header构建器
+            SmartRefreshLayout.setDefaultRefreshHeaderCreator(DefaultRefreshHeaderCreator { context, layout ->
+                val header = ClassicsHeader(context).setSpinnerStyle(SpinnerStyle.Translate)
+                header.setPrimaryColorId(R.color.colorPrimary)
+                header.setAccentColorId(android.R.color.white)
+                header//指定为经典Header，默认是 贝塞尔雷达Header
+            })
+            //设置全局的Footer构建器
+            SmartRefreshLayout.setDefaultRefreshFooterCreator(DefaultRefreshFooterCreator { context, layout ->
+                layout.setEnableLoadMoreWhenContentNotFull(true)//内容不满一页时候启用加载更多
+                val footer = ClassicsFooter(context)
+                footer.setBackgroundResource(android.R.color.white)
+                footer.spinnerStyle = SpinnerStyle.Scale//设置为拉伸模式
+                footer//指定为经典Footer，默认是 BallPulseFooter
+            })
+        }
     }
 
     override fun onCreate() {

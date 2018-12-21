@@ -1,6 +1,7 @@
 package com.model.basemodel
 
 import com.model.basemodel.ui.activity.base.BaseActivity
+import org.jetbrains.anko.intentFor
 
 
 /**
@@ -22,5 +23,6 @@ class TestActivity : BaseActivity() {
     }
 
     override fun initData() {
+        startActivity(intentFor<MainListActivity>())
     }
 }

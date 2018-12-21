@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.model.basemodel.R
 import com.model.basemodel.ui.activity.base.IBase
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import de.greenrobot.event.EventBus
 import kotlinx.android.synthetic.main.common_list.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -42,37 +43,32 @@ abstract class BaseListFragment : IBase, Fragment() {
         initErrorLayout()
     }
 
-    var mLotateHeaderListViewFrame: PtrClassicFrameLayout? = null
+    var mRefreshLayout: SmartRefreshLayout? = null
 
     fun initListViewFrame(view: View?) {
-        mLotateHeaderListViewFrame = view?.findViewById(R.id.rotate_header_list_view_frame)
-                as PtrClassicFrameLayout
-        mLotateHeaderListViewFrame?.setPtrHandler(object : PtrDefaultHandler2() {
-            override fun onLoadMoreBegin(frame: PtrFrameLayout) {
-                mLotateHeaderListViewFrame?.postDelayed(Runnable {
-                    onLoadMore()
-                }, 1500)
-            }
-
-            override fun onRefreshBegin(frame: PtrFrameLayout) {
-                mLotateHeaderListViewFrame?.postDelayed(Runnable {
-                    onRefresh()
-                    goneErrorLayout()
-                }, 1500)
-            }
-        })
-        // header  设置下拉刷新header  如只需常规刷新，删除一下代码
-        val header = StoreHouseHeader(activity)
-        header.setPadding(0, dip(15.0f), 0, dip(15.0f))
-        header.initWithString("double wang")
-        header.setTextColor(R.color.colorPrimary)
-        mLotateHeaderListViewFrame?.setHeaderView(header)
-        mLotateHeaderListViewFrame?.addPtrUIHandler(header)
+        mRefreshLayout = view?.findViewById(R.id.refreshLayout)
+                as SmartRefreshLayout
+        mRefreshLayout?.setOnRefreshListener { refreshLayout ->
+            refreshLayout.layout.postDelayed({
+                onRefresh()
+                hideErrorLayout()
+                refreshLayout.finishRefresh()
+                refreshLayout.resetNoMoreData()//刷新时重制loadmore
+            }, 2000)
+        }
+        mRefreshLayout?.setOnLoadMoreListener { refreshLayout ->
+            refreshLayout.layout.postDelayed({
+                onLoadMore()
+                refreshLayout.finishLoadMoreWithNoMoreData()//将不会再次触发加载更多事件
+            }, 2000)
+        }
+        //触发自动刷新
+//        refreshLayout.autoRefresh()
     }
 
     //停止刷新
     fun refreshComplete() {
-        mLotateHeaderListViewFrame?.refreshComplete()
+        mRefreshLayout?.finishRefresh()
     }
 
     //设置网络错误时，点击重新请求
@@ -107,7 +103,7 @@ abstract class BaseListFragment : IBase, Fragment() {
         error_layout.visibility = View.VISIBLE
     }
 
-    fun goneErrorLayout() {
+    fun hideErrorLayout() {
         error_layout.visibility = View.GONE
     }
 

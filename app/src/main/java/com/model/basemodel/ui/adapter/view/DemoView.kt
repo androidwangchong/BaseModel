@@ -23,7 +23,7 @@ fun Activity.DemoView(m: model): View {
     }.view
 
     with(view) {
-        textView.text = m.title
+        decs.text = m.title
     }
     return view
 

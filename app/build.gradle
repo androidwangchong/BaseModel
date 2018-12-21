@@ -72,6 +72,8 @@ dependencies {
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'com.android.support:design:25.3.1'
     compile 'in.srain.cube:ptr-load-more:1.0.6'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'//没有使用特殊Header，可以不加这行
     //添加文件夹选择器https://github.com/spacecowboy/NoNonsense-FilePicker
 //    compile 'com.nononsenseapps:filepicker:4.1.0'
     //glide
