@@ -106,7 +106,7 @@ object ScreenUtils {
 
         val width = getScreenWidth(activity)
         val height = getScreenHeight(activity)
-        var bp: Bitmap? = null
+        var bp: Bitmap?
         bp = Bitmap.createBitmap(bmp, 0, statusBarHeight, width, height - statusBarHeight)
         view.destroyDrawingCache()
         return bp

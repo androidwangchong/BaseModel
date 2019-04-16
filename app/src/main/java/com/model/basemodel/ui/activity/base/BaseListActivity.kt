@@ -1,10 +1,5 @@
-package com.yimai.app.ui.base
+package com.model.basemodel.ui.activity.base
 
-import `in`.srain.cube.views.ptr.PtrClassicFrameLayout
-import `in`.srain.cube.views.ptr.PtrDefaultHandler2
-import `in`.srain.cube.views.ptr.PtrFrameLayout
-import `in`.srain.cube.views.ptr.header.StoreHouseHeader
-import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -12,20 +7,13 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.View
-import android.view.WindowManager
 import android.widget.TextView
-import android.widget.Toast
 import com.jaeger.library.StatusBarUtil
 import com.model.basemodel.R
-import com.model.basemodel.ui.activity.base.IBase
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.api.RefreshLayout
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import de.greenrobot.event.EventBus
 import kotlinx.android.synthetic.main.common_list.*
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.dip
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 /**

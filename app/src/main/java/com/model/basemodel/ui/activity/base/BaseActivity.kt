@@ -45,7 +45,7 @@ abstract class BaseActivity : IBase, AppCompatActivity(), AnkoLogger {
         finish()
     }
 
-    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
         super.onSaveInstanceState(outState, outPersistentState)
     }
 

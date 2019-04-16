@@ -1,4 +1,4 @@
-package com.yimai.app.ui.base
+package com.model.basemodel.ui.activity.base
 
 import `in`.srain.cube.views.ptr.PtrClassicFrameLayout
 import `in`.srain.cube.views.ptr.PtrDefaultHandler2
@@ -23,7 +23,7 @@ import org.jetbrains.anko.support.v4.dip
  */
 abstract class BaseListFragment : IBase, Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater?.inflate(layoutResId, container, false)
         return view
     }
@@ -35,7 +35,7 @@ abstract class BaseListFragment : IBase, Fragment() {
         }
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
         initListViewFrame(view)

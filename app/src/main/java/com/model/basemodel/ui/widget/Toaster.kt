@@ -9,12 +9,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-
 import com.model.basemodel.R
 import org.jetbrains.anko.imageResource
-import android.R.string.cancel
-import android.R.attr.rotation
-import com.github.florent37.viewanimator.ViewAnimator
 
 
 class Toaster {
@@ -42,15 +38,15 @@ class Toaster {
             when (imageIdex) {
                 FORBID -> {
                     //禁止
-                    image_view.imageResource = R.mipmap.icon_minus_alt
+                    image_view.setImageResource(R.mipmap.icon_minus_alt)
                 }
                 PROMPT -> {
                     //感叹号提示
-                    image_view.imageResource = R.mipmap.icon_info
+                    image_view.setImageResource(R.mipmap.icon_info)
                 }
                 SUCCESSFUL -> {
                     //成功
-                    image_view.imageResource = R.mipmap.icon_check_alt
+                    image_view.setImageResource(R.mipmap.icon_check_alt)
                 }
 
             }

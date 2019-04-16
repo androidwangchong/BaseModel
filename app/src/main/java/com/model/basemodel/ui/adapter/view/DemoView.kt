@@ -2,6 +2,7 @@ package com.model.basemodel.ui.adapter.view
 
 import android.app.Activity
 import android.view.View
+import android.widget.LinearLayout
 import com.model.basemodel.R
 import com.model.basemodel.http.apiconfig.model
 import kotlinx.android.synthetic.main.view_demo.*
@@ -14,17 +15,13 @@ import org.jetbrains.anko.linearLayout
  * Created by wangchong on 2017/7/17.
  */
 
-fun Activity.DemoView(m: model): View {
+fun Activity.demoView(m: model): View {
 
     val view = UI {
-        linearLayout {
-            include<View>(R.layout.view_demo)
-        }
+        include<View>(R.layout.view_demo)
     }.view
 
-    with(view) {
-        decs.text = m.title
-    }
+    decs.text = m.title
     return view
 
 }

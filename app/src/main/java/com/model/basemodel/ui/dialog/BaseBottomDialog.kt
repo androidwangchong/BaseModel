@@ -18,7 +18,7 @@ abstract class BaseBottomDialog : DialogFragment() {
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.BottomDialog)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         dialog.window!!.requestFeature(Window.FEATURE_NO_TITLE)
         dialog.setCanceledOnTouchOutside(cancelOutside)
@@ -27,7 +27,7 @@ abstract class BaseBottomDialog : DialogFragment() {
         return v
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindView()
     }

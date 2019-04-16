@@ -1,12 +1,9 @@
 package com.model.basemodel
 
-import android.widget.ImageView
 import com.alibaba.fastjson.JSON
-import com.bumptech.glide.Glide
 import com.model.basemodel.http.apiconfig.model
-import com.model.basemodel.http.demoApi.userInfo
 import com.orhanobut.logger.Logger
-import com.yimai.app.ui.base.BaseListActivity
+import com.model.basemodel.ui.activity.base.BaseListActivity
 import net.idik.lib.slimadapter.SlimAdapter
 
 /**
