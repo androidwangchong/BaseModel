@@ -14,7 +14,7 @@ import de.greenrobot.event.EventBus
 abstract class BaseFragment : IBase, Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater?.inflate(layoutResId, container, false)
+        val view = inflater?.inflate(layoutResId(), container, false)
         return view
     }
 
@@ -39,7 +39,7 @@ abstract class BaseFragment : IBase, Fragment() {
 
     abstract override fun initData()
 
-    abstract val layoutResId: Int
+    abstract fun layoutResId(): Int
 
 
     override fun onStop() {

@@ -24,7 +24,7 @@ import org.jetbrains.anko.support.v4.dip
 abstract class BaseListFragment : IBase, Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater?.inflate(layoutResId, container, false)
+        var view = inflater?.inflate(layoutResId(), container, false)
         return view
     }
 
@@ -87,7 +87,7 @@ abstract class BaseListFragment : IBase, Fragment() {
     abstract fun onRefresh()
     abstract fun onLoadMore()
 
-    abstract val layoutResId: Int
+    abstract fun layoutResId(): Int
 
 
     override fun onStop() {

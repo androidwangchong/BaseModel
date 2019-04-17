@@ -57,7 +57,7 @@ class MyApplication : Application() {
         MultiDex.install(this)
     }
 
-    fun initLoggerInfo() {
+    private fun initLoggerInfo() {
 //        var formatStrategy = PrettyFormatStrategy.newBuilder()
 //                .showThreadInfo(true)   //（可选）是否显示线程信息。默认值为true
 //                .methodCount(2)          //（可选）要显示的方法行数。默认值2
@@ -68,7 +68,7 @@ class MyApplication : Application() {
         Logger.addLogAdapter(AndroidLogAdapter())
     }
 
-    fun initUatCer() {
+    private fun initUatCer() {
         if (HttpConfig.IS_UAT) {
             try {
                 OKHttpFactory.setCertificates(assets.open("uat_dev_hrx_ai.cer"))

@@ -24,7 +24,7 @@ abstract class BaseListActivity : IBase, AppCompatActivity(), AnkoLogger {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutResId)
+        setContentView(layoutResId())
         initToolBar()
         initListViewFrame()
         if (!EventBus.getDefault().isRegistered(this)) {
@@ -89,7 +89,7 @@ abstract class BaseListActivity : IBase, AppCompatActivity(), AnkoLogger {
     }
 
     abstract val title: String
-    abstract val layoutResId: Int
+    abstract fun layoutResId(): Int
     abstract fun getIntentMessageData()
     abstract override fun initView()
     abstract override fun initData()
