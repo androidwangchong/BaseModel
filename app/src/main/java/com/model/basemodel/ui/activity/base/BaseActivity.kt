@@ -24,7 +24,7 @@ abstract class BaseActivity : IBase, AppCompatActivity(), AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutResId)
+        setContentView(layoutResId())
         val toolbar = findViewById(R.id.toolbar) as? Toolbar
         toolbar?.setNavigationOnClickListener {
             onBack()
@@ -50,7 +50,7 @@ abstract class BaseActivity : IBase, AppCompatActivity(), AnkoLogger {
     }
 
     abstract val title: String
-    abstract val layoutResId: Int
+    abstract fun layoutResId(): Int
     abstract fun getIntentMessageData()
     abstract override fun initView()
     abstract override fun initData()
