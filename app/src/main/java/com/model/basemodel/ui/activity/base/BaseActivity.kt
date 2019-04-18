@@ -2,13 +2,11 @@ package com.model.basemodel.ui.activity.base
 
 import android.content.res.Configuration
 import android.content.res.Resources
-import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.view.WindowManager
 import android.widget.TextView
 import com.jaeger.library.StatusBarUtil
 import com.model.basemodel.R
