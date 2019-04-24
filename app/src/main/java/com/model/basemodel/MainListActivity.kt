@@ -11,6 +11,10 @@ import net.idik.lib.slimadapter.SlimAdapter
  * Created by wangchong on 2017/7/17.
  */
 class MainListActivity : BaseListActivity() {
+    override fun layoutResId(): Int {
+        return  R.layout.common_list
+    }
+
     override fun getIntentMessageData() {
     }
 
@@ -27,7 +31,6 @@ class MainListActivity : BaseListActivity() {
     override val title: String by lazy {
         "列表"
     }
-    override val layoutResId: Int = R.layout.common_list
 
     override fun initView() {
     }
