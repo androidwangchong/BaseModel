@@ -7,7 +7,7 @@ import com.model.basemodel.ui.activity.base.BaseActivity
  */
 class MainActivity : BaseActivity() {
     override fun layoutResId(): Int {
-        return  R.layout.activity_main
+        return R.layout.activity_main
     }
 
 

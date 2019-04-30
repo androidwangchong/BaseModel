@@ -1,7 +1,10 @@
 package com.model.basemodel
 
+import com.model.basemodel.dslbuilder.ClickView
 import com.model.basemodel.ui.activity.base.BaseActivity
-import org.jetbrains.anko.intentFor
+import com.model.basemodel.dslbuilder.Toast
+import com.model.basemodel.util.clickThrottleFirst
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 /**
@@ -20,12 +23,18 @@ class TestActivity : BaseActivity() {
     override val title: String = "测试activity"
 
     override fun initView() {
-
-
+        ClickView {
+            view = rd_menu_mine
+            todo = {
+                Toast {
+                    content = "123123"
+                }
+            }
+        }
 
     }
 
     override fun initData() {
-        startActivity(intentFor<MainListActivity>())
+//        startActivity(intentFor<MainListActivity>())
     }
 }
